@@ -11,7 +11,7 @@ test -e artifacts/linux-x86-64 || exit 2
 test -e artifacts/macos-x86-64 || exit 2
 
 log "Copying artifacts into their respective packages..."
-cp artifacts/linux-x86-64/lib/libargon2.so.1 libargon2-x86_64-linux/libargon2.so
+cp artifacts/linux-x86-64/lib/x86_64-linux-gnu/libargon2.so.1 libargon2-x86_64-linux/libargon2.so
 cp artifacts/macos-x86-64/lib/libargon2.1.dylib libargon2-x86_64-macosx/libargon2.dylib
 
 log "Decrypting deploy key..."
