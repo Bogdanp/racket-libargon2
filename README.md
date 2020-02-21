@@ -4,7 +4,10 @@
 
 This package distributes [libargon2] as a Racket package for Linux and macOS:
 
+* `libargon2`
+* `libargon2-i386-win32`
 * `libargon2-x86_64-linux`
 * `libargon2-x86_64-macosx`
+* `libargon2-x86_64-win32`
 
 [libargon2]: https://github.com/P-H-C/phc-winner-argon2
