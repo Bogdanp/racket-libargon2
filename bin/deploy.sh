@@ -13,6 +13,8 @@ test -e artifacts/macos-x86-64 || exit 2
 log "Copying artifacts into their respective packages..."
 cp artifacts/linux-x86-64/lib/x86_64-linux-gnu/libargon2.so.1 libargon2-x86_64-linux/libargon2.so
 cp artifacts/macos-x86-64/lib/libargon2.1.dylib libargon2-x86_64-macosx/libargon2.dylib
+cp artifacts/win32-i386/libargon2.dll libargon2-i386-win32/libargon2.dll
+cp artifacts/win32-x86-64/libargon2.dll libargon2-x86_64-win32/libargon2.dll
 
 log "Decrypting deploy key..."
 gpg -q \
@@ -26,7 +28,7 @@ chmod 0600 deploy-key
 trap "rm -f deploy-key" EXIT
 
 log "Building packages..."
-for package in "libargon2-x86_64-linux" "libargon2-x86_64-macosx"; do
+for package in "libargon2-x86_64-linux" "libargon2-x86_64-macosx" "libargon2-i386-win32" "libargon2-x86_64-win32"; do
     log "Building '$package'..."
     pushd "$package"
 

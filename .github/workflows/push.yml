@@ -23,9 +23,25 @@ jobs:
           name: macos-x86-64
           path: artifacts/macos-x86-64
 
+  build-windows:
+    name: build on Windows
+    runs-on: windows-2016
+    steps:
+      - uses: actions/checkout@master
+      - run: bin/build-win32-i386.cmd
+      - run: bin/build-win32-x86-64.cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: win32-i386
+          path: artifacts/win32-i386
+      - uses: actions/upload-artifact@v1
+        with:
+          name: win32-x86-64
+          path: artifacts/win32-x86-64
+
   deploy:
     name: deploy
-    needs: [build-linux, build-macos]
+    needs: [build-linux, build-macos, build-windows]
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
