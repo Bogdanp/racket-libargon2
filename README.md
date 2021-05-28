@@ -1,6 +1,6 @@
 # racket-libargon2
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FBogdanp%2Fracket-libargon2%2Fbadge&style=flat)](https://actions-badge.atrox.dev/Bogdanp/racket-libargon2/goto)
+[![build](https://github.com/Bogdanp/racket-libargon2/actions/workflows/push.yml/badge.svg)](https://github.com/Bogdanp/racket-libargon2/actions/workflows/push.yml)
 
 This package distributes [libargon2] as a Racket package for Linux,
 macOS and Windows.
