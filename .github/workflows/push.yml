@@ -39,6 +39,11 @@ jobs:
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@master
+      - name: Install Windows SDK 8.1
+        shell: pwsh
+        run: |
+          Invoke-Webrequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=323507" -OutFile sdksetup.exe
+          Start-Process -Wait sdksetup.exe "/quiet"
       - run: bin/build-win32-i386.cmd
       - run: bin/build-win32-x86-64.cmd
       - uses: actions/upload-artifact@v1
