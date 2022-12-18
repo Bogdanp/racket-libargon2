@@ -25,7 +25,7 @@ jobs:
 
   build-macos-x86-64:
     name: build on macOS x86-64
-    runs-on: macOS-10.14
+    runs-on: macOS-11
     steps:
       - uses: actions/checkout@master
       - run: bin/build-macos-x86-64.sh
@@ -36,7 +36,7 @@ jobs:
 
   build-windows:
     name: build on Windows
-    runs-on: windows-2016
+    runs-on: windows-2019
     steps:
       - uses: actions/checkout@master
       - run: bin/build-win32-i386.cmd
