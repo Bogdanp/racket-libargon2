@@ -1,7 +1,18 @@
 on: push
 name: build
 jobs:
-  build-linux:
+  build-linux-aarch64:
+    name: build on Ubuntu
+    runs-on: ubuntu-20.04-arm
+    steps:
+      - uses: actions/checkout@master
+      - run: bin/build-linux-aarch64.sh
+      - uses: actions/upload-artifact@v1
+        with:
+          name: linux-aarch64
+          path: artifacts/linux-aarch64
+
+  build-linux-x86-64:
     name: build on Ubuntu
     runs-on: ubuntu-20.04
     steps:
@@ -25,7 +36,7 @@ jobs:
 
   build-macos-x86-64:
     name: build on macOS x86-64
-    runs-on: macOS-11
+    runs-on: macOS-13
     steps:
       - uses: actions/checkout@master
       - run: bin/build-macos-x86-64.sh
@@ -36,7 +47,7 @@ jobs:
 
   build-windows:
     name: build on Windows
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@master
       - name: Install Windows SDK 8.1
@@ -57,9 +68,19 @@ jobs:
 
   deploy:
     name: deploy
-    needs: [build-linux, build-macos-aarch64, build-macos-x86-64, build-windows]
+    needs:
+      - build-linux-aarch64
+      - build-linux-x86-64
+      - build-macos-aarch64
+      - build-macos-x86-64
+      - build-windows
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@master
+      - uses: actions/download-artifact@v1
+        with:
+          name: linux-aarch64
+          path: artifacts/linux-aarch64
       - uses: actions/checkout@master
       - uses: actions/download-artifact@v1
         with:
