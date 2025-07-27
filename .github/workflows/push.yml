@@ -2,7 +2,7 @@ on: push
 name: build
 jobs:
   build-linux-aarch64:
-    name: build on Ubuntu
+    name: build on Ubuntu aarch64
     runs-on: ubuntu-20.04-arm
     steps:
       - uses: actions/checkout@master
@@ -13,7 +13,7 @@ jobs:
           path: artifacts/linux-aarch64
 
   build-linux-x86-64:
-    name: build on Ubuntu
+    name: build on Ubuntu x86-64
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
