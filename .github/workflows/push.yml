@@ -82,7 +82,6 @@ jobs:
         with:
           name: linux-aarch64
           path: artifacts/linux-aarch64
-      - uses: actions/checkout@master
       - uses: actions/download-artifact@v4
         with:
           name: linux-x86-64
